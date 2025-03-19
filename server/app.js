@@ -1,3 +1,4 @@
+
 const path = require('node:path');
 const fs = require('node:fs');
 const express = require('express');
@@ -7,11 +8,11 @@ const PORT = process.env.SECONDARY_PUBLIC_PORT || 8000;
 
 const app = express();
 
-// Custom middleware function to log requests and response status
+
 const logRequests = (req, res, next) => {
     const startTime = new Date();
 
-    // Capture the end function to get the response status
+    
     const end = res.end;
     res.end = function (chunk, encoding) {
         res.end = end;
@@ -23,7 +24,7 @@ const logRequests = (req, res, next) => {
             } - ${duration}ms`
         );
 
-        // Call the original end function to complete the response
+        
         res.end(chunk, encoding);
     };
 
